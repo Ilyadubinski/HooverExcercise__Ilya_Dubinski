@@ -6,7 +6,7 @@ To run the Hoover program 'cd' into the project directory.Having Node installed 
 <br/>
 <br/>
 To run the program enter into the terminal: node program.js<br/>
-To change the parameters of the program go into the input file.<br/> 
+To change the parameters of the program go into the input file. 
 1. First line is the grid dimmensions
 2. Second line is the hoover's starting position
 3. The subsequent lines are the locations of patches of dirt - these are optional arguments
