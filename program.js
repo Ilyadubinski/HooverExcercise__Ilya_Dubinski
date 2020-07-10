@@ -4,6 +4,7 @@ const South = [0,-1];
 const East = [1,0]; 
 const West = [-1,0]; 
 
+// Main Function
 
 function hooverProcess (){
     let dirtRemovedCounter = 0;
@@ -23,6 +24,7 @@ function hooverProcess (){
         
     }
     
+    // Input were strings. Output should match
     console.log(currentHooverPosition.toString());
     console.log(dirtRemovedCounter.toString());
     
@@ -30,7 +32,7 @@ function hooverProcess (){
 }
 
 
-
+// Helper Functions
 
 function fetchData() {
     try {
@@ -111,6 +113,6 @@ function movehoover(drivingInstruction, currentHooverPosition) {
 }
 
 
-
+// Method Call
 
 hooverProcess()
