@@ -4,30 +4,34 @@ const South = [0,-1];
 const East = [1,0]; 
 const West = [-1,0]; 
 
+
+function hooverProcess () {
+
     try {
         var allDataArray = fs.readFileSync('input.txt', 'utf8').split("\n");
     } catch (e) {
         console.log('Error:', e.stack);
     }
-
-   
+    
+    
     let drivingInstructions = allDataArray.pop()
-
+    
+    
     allDataTwoDimArray = allDataArray.map(ele => {
         position = ele.split(' ');
         position[0] = Number(position[0]);
         position[1] = Number(position[1]);
         return position;
     })
-
+    
     
     let gridDimmensions = allDataTwoDimArray.shift();
     let currentHooverPosition = allDataTwoDimArray.shift();
     let dirtLocations = allDataTwoDimArray;
     let dirtRemovedCounter = 0;
-
     
-
+    
+    
     for (let i = 0; i < drivingInstructions.length; i++) {
         let oldHooverPosition = Array.from(currentHooverPosition);
         dirtLocations.forEach(pos => {
@@ -63,7 +67,12 @@ const West = [-1,0];
             currentHooverPosition[1] = oldhooverPosition[1]
         }
     }
-
+    
     console.log(currentHooverPosition.toString());
     console.log(dirtRemovedCounter.toString());
+
+
+}
+
+
 
