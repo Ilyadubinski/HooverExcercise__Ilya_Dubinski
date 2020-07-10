@@ -1,7 +1,7 @@
 
 ## Running The Program
 
-To run the Hoover program 'cd' into the project directory.Having Node installed is a prerquisite to running this program.<br/>
+To run the Hoover program 'cd' into the project directory.Node and filestream are needed to run this program.<br/>
 <br/>
 <br/>
 <br/>
