@@ -1,71 +1,69 @@
-var fs = require('fs');
-try {
-    var oneArray = fs.readFileSync('input.txt', 'utf8').split("\n");
-} catch (e) {
-    console.log('Error:', e.stack);
-}
-// driving instructions
-// Do this outside of try statement for scope reasons 
-let dD = oneArray.pop()
+const fs = require('fs');
+const North = [0,1];
+const South = [0,-1];
+const East = [1,0]; 
+const West = [-1,0]; 
 
-twoD = oneArray.map(ele => {
-    position = ele.split(' ');
-    position[0] = Number(position[0]);
-    position[1] = Number(position[1]);
-    return position;
-})
-
-    // grid dimmension
-    let gD = twoD.shift();
-    // hoover starting position
-    let hP =twoD.shift();
-    // dirt locations
-    let dL = twoD;
-    // North, South, East, West
-    let N = [0,1];
-    let S = [0,-1];
-    let E = [1,0]; 
-    let W = [-1,0]; 
-    let numPatchCl = 0;
-
-for (let i = 0; i < dD.length; i++) {
-    // clone hoover position and save it
-    let oldhP = Array.from(hP);
-    // check if we landed on a patch of dirt-->remove it if we did
-    dL.forEach(pos => {
-       if (hP[0] === pos[0] && hP[1] === pos[1] ) {
-           numPatchCl += 1;
-           pos[0] = pos['-']
-           pos[1] = pos['-']
-       }
-   })
-    // move the hoover
-    if (dD[i] === 'N') {
-        hP[0] += N[0];
-        hP[1] += N[1];
-    } else if (dD[i] === 'S') {
-        hP[0] += S[0];
-        hP[1] += S[1];
-    } else if (dD[i] === 'E') {
-        hP[0] += E[0];
-        hP[1] += E[1];
-    } else if (dD[i] === 'W') {
-        hP[0] += W[0];
-        hP[1] += W[1];
+    try {
+        var allDataArray = fs.readFileSync('input.txt', 'utf8').split("\n");
+    } catch (e) {
+        console.log('Error:', e.stack);
     }
-    // check if we have exited the dimmensions of the grid
-    // revert back to oldhP if we did (mimic moving in place against wall)
-    if (hP[0] > gD[0]) {
-        hP[0] = oldhP[0]
-    } else if (hP[1] > gD[1] ) {
-        hP[1] = oldhP[1]
-    } else if (hP[0] < 0) {
-        hP[0] = oldhP[0]
-    } else if (hP[1] < 0) {
-        hP[1] = oldhP[1]
-    }
-}
 
-console.log(hP.toString());
-console.log(numPatchCl.toString());
+   
+    let drivingInstructions = allDataArray.pop()
+
+    allDataTwoDimArray = allDataArray.map(ele => {
+        position = ele.split(' ');
+        position[0] = Number(position[0]);
+        position[1] = Number(position[1]);
+        return position;
+    })
+
+    
+    let gridDimmensions = allDataTwoDimArray.shift();
+    let currentHooverPosition = allDataTwoDimArray.shift();
+    let dirtLocations = allDataTwoDimArray;
+    let dirtRemovedCounter = 0;
+
+    
+
+    for (let i = 0; i < drivingInstructions.length; i++) {
+        let oldHooverPosition = Array.from(currentHooverPosition);
+        dirtLocations.forEach(pos => {
+                if (currentHooverPosition[0] === pos[0] && currentHooverPosition[1] === pos[1] ) {
+                dirtRemovedCounter += 1;
+                pos[0] = pos['-']
+                pos[1] = pos['-']
+            }
+        })
+        // move the hoover
+        if (drivingInstructions[i] === 'N') {
+            currentHooverPosition[0] += North[0];
+            currentHooverPosition[1] += North[1];
+        } else if (drivingInstructions[i] === 'S') {
+            currentHooverPosition[0] += South[0];
+            currentHooverPosition[1] += South[1];
+        } else if (drivingInstructions[i] === 'E') {
+            currentHooverPosition[0] += East[0];
+            currentHooverPosition[1] += East[1];
+        } else if (drivingInstructions[i] === 'W') {
+            currentHooverPosition[0] += West[0];
+            currentHooverPosition[1] += West[1];
+        }
+        // check if we have exited the dimmensions of the grid
+        // revert back to oldHooverPosition if we did (mimic moving in place against wall)
+        if (currentHooverPosition[0] > gridDimmensions[0]) {
+            currentHooverPosition[0] = oldhooverPosition[0]
+        } else if (currentHooverPosition[1] > gridDimmensions[1] ) {
+            currentHooverPosition[1] = oldhooverPosition[1]
+        } else if (currentHooverPosition[0] < 0) {
+            currentHooverPosition[0] = oldhooverPosition[0]
+        } else if (currentHooverPosition[1] < 0) {
+            currentHooverPosition[1] = oldhooverPosition[1]
+        }
+    }
+
+    console.log(currentHooverPosition.toString());
+    console.log(dirtRemovedCounter.toString());
 
