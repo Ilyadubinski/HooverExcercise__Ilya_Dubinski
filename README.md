@@ -1,7 +1,7 @@
 
 ## Running The Program
 
-To run the Hoover program 'cd' into the project directory: hooverProject<br/>
+To run the Hoover program 'cd' into the project directory: hooverAlgo<br/>
 Having Node installed is a prerquisite to running this program<br/>
 To run the program enter into the terminal: node program.js<br/>
 To change the parameters of the program go into the input file.<br/> 
