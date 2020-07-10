@@ -17,6 +17,6 @@ To change the parameters of the program go into the input file.
     -S (South)<br/>
     -E (East)<br/>
     -W (West)<br/>
-    
+5. When inputing paramaters for the program to use, be weary of formating convetions. 
 ## Notes on the Program 
  
