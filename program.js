@@ -9,22 +9,22 @@ const West = [-1,0];
 function hooverProcess (){
     let dirtRemovedCounter = 0;
     
-    let preppedData  = fetchData()
-    let gridDimmensions = preppedData['gridDimmensions']
-    let currentHooverPosition = preppedData['currentHooverPosition']
-    let dirtLocations = preppedData['dirtLocations']
-    let drivingInstructions = preppedData['drivingInstructions']
+    let preppedData  = fetchData();
+    let gridDimmensions = preppedData['gridDimmensions'];
+    let currentHooverPosition = preppedData['currentHooverPosition'];
+    let dirtLocations = preppedData['dirtLocations'];
+    let drivingInstructions = preppedData['drivingInstructions'];
 
     for (let i = 0; i < drivingInstructions.length; i++) {
         
         let oldHooverPosition = Array.from(currentHooverPosition);
-        dirtRemovedCounter += cleanPatchofDirt(dirtLocations, currentHooverPosition)
-        movehoover(drivingInstructions[i], currentHooverPosition)
-        checkHooverPosition(gridDimmensions, currentHooverPosition, oldHooverPosition)
+        dirtRemovedCounter += cleanPatchofDirt(dirtLocations, currentHooverPosition);
+        movehoover(drivingInstructions[i], currentHooverPosition);
+        checkHooverPosition(gridDimmensions, currentHooverPosition, oldHooverPosition);
         
     }
     
-    // Input were strings. Output should match
+    // Input were strings objects. Output are strings
     console.log(currentHooverPosition.toString());
     console.log(dirtRemovedCounter.toString());
     
@@ -41,7 +41,7 @@ function fetchData() {
         console.log('Error:', e.stack);
     }
 
-    let drivingInstructions = allDataArray.pop()
+    let drivingInstructions = allDataArray.pop();
 
 
     allDataTwoDimArray = allDataArray.map(ele => {
@@ -67,13 +67,13 @@ function fetchData() {
 
 function checkHooverPosition(gridDimmensions, currentHooverPosition, oldHooverPosition) {
     if (currentHooverPosition[0] > gridDimmensions[0]) {
-        currentHooverPosition[0] = oldHooverPosition[0]
+        currentHooverPosition[0] = oldHooverPosition[0];
     } else if (currentHooverPosition[1] > gridDimmensions[1] ) {
-        currentHooverPosition[1] = oldHooverPosition[1]
+        currentHooverPosition[1] = oldHooverPosition[1];
     } else if (currentHooverPosition[0] < 0) {
-        currentHooverPosition[0] = oldHooverPosition[0]
+        currentHooverPosition[0] = oldHooverPosition[0];
     } else if (currentHooverPosition[1] < 0) {
-        currentHooverPosition[1] = oldHooverPosition[1]
+        currentHooverPosition[1] = oldHooverPosition[1];
     }
     
     
@@ -85,8 +85,8 @@ function cleanPatchofDirt(dirtLocations, currentHooverPosition) {
     dirtLocations.forEach(pos => {
         if (currentHooverPosition[0] === pos[0] && currentHooverPosition[1] === pos[1]) {
             counter += 1;
-            pos[0] = pos['-']
-            pos[1] = pos['-']
+            pos[0] = pos['-'];
+            pos[1] = pos['-'];
         }
     })
 
@@ -113,6 +113,6 @@ function movehoover(drivingInstruction, currentHooverPosition) {
 }
 
 
-// Method Call
+// Program Call
 
-hooverProcess()
+hooverProcess();
